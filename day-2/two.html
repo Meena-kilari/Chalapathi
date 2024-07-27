@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complex Table Structure</title>
+    <style>
+        .container {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .container, .container td {
+            border: 1px solid black;
+        }
+        .row-1 .col-1, .row-1 .col-2{
+            width: 50%;
+        }
+        .row-2 .col-1,.row-2 .col-2,.row-2 .col-3 {
+            width: 33.33%;
+        }
+        .row-3 .col-1,.row-3 .col-2 {
+            width: 25%;
+        }
+        .row-4 .col-1,.row-4 .col-2,.row-4 .col-3,.row-4 .col-4{
+            width: 20%;
+        }
+        .col-4 {
+            background-color: blue;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        form input, form select {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <table class="container">
+        <tr class="row-1">
+            <td class="col-1"><img src="https://preview.redd.it/j2ink51mnxz51.jpg?auto=webp&s=040889cb6a1bfa825a4736afa128421009ba12a6" alt="Image" style="width: 25%;"></td>
+            <td class="col-2"><p>Hello.I'm Meenakshi.</p></td>
+        </tr>
+        <tr class="row-2">
+            <td class="col-1">
+                <video controls>
+                    <source src="video1.mp4" type="video/mp4">
+                    
+                </video>
+                <audio controls>
+                    <source src="audio1.mp3" type="audio/mp3">
+                    
+                </audio>
+            </td>
+            <td class="col-2">
+                <video controls>
+                    <source src="video2.mp4" type="video/mp4">
+                    
+                </video>
+                <audio controls>
+                    <source src="audio2.mp3" type="audio/mp3">
+                    
+                </audio>
+            </td>
+            <td class="col-3">
+                <video controls>
+                    <source src="video3.mp4" type="video/mp4">
+                   
+                </video>
+                <audio controls>
+                    <source src="audio3.mp3" type="audio/mp3">
+                    
+                </audio>
+            </td>
+        </tr>
+        <tr class="row-3">
+            <td class="col-1">
+                <form>
+                    <label>Email:</label>
+                    <input type="email" id="email" name="email">
+                    <label>Password:</label>
+                    <input type="password" id="password" name="password">
+                    <label>OTP:</label>
+                    <input type="text" id="otp" name="otp">
+                    <button type="submit">Submit</button>
+                </form>
+            </td>
+            <td class="col-2">
+                <form>
+                    <label>Name:</label>
+                    <input type="text" id="name" name="name">
+                    <label>Date of Birth:</label>
+                    <input type="date" id="dob" name="dob">
+                    <label>Email:</label>
+                    <input type="email" id="email2" name="email">
+                    <label>Favourite Language:</label>
+                    <select id="language" name="language">
+                        <option>Python</option>
+                        <option>JavaScript</option>
+                        <option>Java</option>
+                        <option>C++</option>
+                    </select>
+                    <button type="submit">Submit</button>
+                </form>
+            </td>
+            <td class="col-25"><p>I'm from guntur.</p></td>
+            <td class="col-25"><img src="https://preview.redd.it/j2ink51mnxz51.jpg?auto=webp&s=040889cb6a1bfa825a4736afa128421009ba12a6" alt="Image" style="width: 100%;"></td>
+        </tr>
+        <tr class="row-4">
+            <td class="col-1">
+                <table style="border-collapse: collapse;">
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Branch</th>
+                    </tr>
+                    <tr>
+                        <td>Meena</td>
+                        <td>20</td>
+                        <td>IT</td>
+                    </tr>
+                    <tr>
+                        <td>sai</td>
+                        <td>22</td>
+                        <td>Pharmacy</td>
+                    </tr>
+                </table>
+            </td>
+            <td class="col-2">
+                <ol>
+                    <li>Eat</li>
+                    <li>Sleep</li>
+                    <li>Work</li>
+                </ol>
+            </td>
+            <td class="col-20">
+                <ul>
+                    <li>Eat</li>
+                    <li>Sleep</li>
+                    <li>Work</li>
+                </ul>
+            </td>
+            <td class="col-3">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tr>
+                        <td style="width: 50%;">
+                            <ol>
+                                <li>Meena</li>
+                                <li>Sai</li>
+                                <li>Hari</li>
+                            </ol>
+                        </td>
+                        <td style="width: 50%;">
+                            <ul>
+                                <li>Meena</li>
+                                <li>Sai</li>
+                                <li>Hari</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td class="col-4"></td>
+        </tr>
+        <tr class="row-5">
+            <td colspan="5" style="text-align: center;">@meena-2024</td>
+        </tr>
+    </table>
+</body>
+</html>

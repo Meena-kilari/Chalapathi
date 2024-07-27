@@ -1,0 +1,64 @@
+       
+        body {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            width: 100%;
+            border: 1px solid #ccc;
+            
+        }
+        .form-section {
+            width: 50%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .form-section h2 {
+            text-align: center;
+        }
+        .form-section form {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            width: 40%;
+            padding-right: 10px;
+            text-align: left;
+        }
+        .form-group input, .form-group select {
+            width: 60%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .form-group .radio-group {
+            display: flex;
+            justify-content: space-around;
+        }
+        .form-group .radio-group label {
+            width: auto;
+            padding-right: 0;
+            text-align: left;
+        }
+        .form-group .radio-group input {
+            width: auto;
+        }
+        .submit-btn button {
+            padding: 10px;
+            width:50%;
+            background-color: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+    
