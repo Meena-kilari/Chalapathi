@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Leap Year Checker</title>
+</head>
+<body>
+    
+    <label>Leap year </br>num1:</label>
+    <input type="number" id="num" value="">
+    <button onclick="meena()">CHECK IT:</button>
+    <p id="result"></p>
+
+    <script>
+        function meena(){
+            var n = document.getElementById('num').value;
+            var result = document.getElementById('result');
+            var n1 = parseInt(n);
+            if ((n1 % 4 == 0 && n1 % 100 != 0) || n1 % 400 == 0) {
+                result.textContent = n1 + " is a leap year.";
+            } else {
+                result.textContent = n1 + " is not a leap year.";
+            }
+        }
+            
+
+    </script>
+</body>
+</html>

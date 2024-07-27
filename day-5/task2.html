@@ -1,0 +1,38 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<label>num1:</label>
+	<input type="number" id="n" value="">
+	<button onclick="meena()">CHECK IT:</button>
+	<p id="testmatch"></p>
+</body>
+<script>
+	function meena(){
+		var n = document.getElementById('n').value;
+            var r, sum = 0;
+            var n1 = parseInt(n); // Convert string to integer
+            var temp = n1;
+            var l = n.length;
+
+            while (temp > 0) {
+                r = temp % 10;
+                var power = 1;
+                for (var i = 0; i < l; i++) {
+                    power *= r; // Manually calculate the power
+                }
+                sum += power;
+                temp = Math.floor(temp / 10); // Use Math.floor for integer division
+            }
+
+            if (sum == n1) {
+                document.getElementById('testmatch').innerText = n1 + " is an Armstrong number.";
+            } else {
+                document.getElementById('testmatch').innerText = n1 + " is not an Armstrong number.";
+            }
+	}
+</script>
+</html>
