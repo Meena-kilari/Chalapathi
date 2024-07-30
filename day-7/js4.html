@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<label>num1:</label>
+	<input type="number" id="number1" value="">
+	<button onclick="luck()">check	:</button>
+	
+</body>
+<script>
+	function luck(){
+	var a=document.getElementById('number1').value;
+	a=Number(a);
+	//document.write(typeof(a));
+	var b=Math.floor(Math.random()*(5-1)+1);
+	//document.write(typeof(b));
+	if(a == b)
+	{
+		alert('lucky'+b);
+	}
+	else{
+		alert('unlucky'+b);
+	}
+}
+</script>
+</html>
