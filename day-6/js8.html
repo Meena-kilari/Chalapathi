@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<script>
+		var a=["1","2","3","4","5"];
+		document.write("length of an array .lenght:   "+"</br>"+a.length+"</br>");
+		document.write("convert array to string .tostring:   "+"</br>"+a.toString()+"</br>");
+		document.write("write the value of index at 2 using .at():   "+"</br>"+a.at(-2)+"</br>");
+		document.write("write the value of index at 2 using a[]:   "+"</br>"+a[2]+"</br>");
+		document.write("divide the each index byt using any symbol .join():   "+"</br>"+a.join(" $ ")+"</br>");
+		document.write("array elements:   "+"</br>"+a.toString()+"</br>");
+		document.write("pop() removes the last element of array:   "+"</br>"+a.pop()+"</br>");
+		document.write("after poped array elements are:   "+"</br>"+a.toString()+"</br>");
+		var a=["1","2","3","4","5"];
+		document.write("array elements:   "+"</br>"+a.toString()+"</br>");
+		document.write("push() add the element at the end of the array:   "+"</br>"+a.push("6")+"</br>");
+		document.write("after push() array elements:   "+"</br>"+a.toString()+"</br>");
+		document.write("shift() removes the first element and shift all the elements to lower index:   "+"</br>"+a.shift()+"</br>");
+	document.write("after shift() array elements:   "+"</br>"+a.toString()+"</br>");
+	document.write("unshift() adds a new  element at the 0th index and shift all the elements to next here it returns length of the array:   "+"</br>"+a.unshift("Lemon")+"</br>");
+	document.write("after unshift() array elements are:   "+"</br>"+a.toString()+"</br>");
+	a[0]="kiwi";
+	document.write("changing elements it replace the given elemnt in the given index: "+"</br>"+a+"</br>");
+	a[a.length] = "apple";
+	document.write("array length  instead of push() we can use this: "+"</br>"+a+"</br>");
+		var a1=["7","8","9"];
+		const res = a.concat(a1);
+		document.write("concatination() joining 2 arrays: "+"</br>"+res+"</br>");
+		var a2=["meena","kilari",]
+		const res1 = a.concat(a1,a2);
+		document.write("concatination() joining 3 arrays: "+"</br>"+res1+"</br>");
+	</script>
+
+</body>
+</html>

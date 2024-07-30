@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lemon Boxes</title>
+</head>
+<body>
+    <label>Enter the number of lemons you have:</label>
+    <input type="text" id="lemons" value=" ">
+    <button onclick="check()">Check</button>
+    <p id="result"></p>
+</body>
+    <script>
+        function check() {
+            var n = (document.getElementById('lemons').value);
+            n=Number(n);
+            var totallemons=21;
+            if(Number.isInteger(n) && n<totallemons && n>0)
+            {
+                var add=totallemons-n;
+                document.getElementById('result').innerHTML="add "+add+"lemons to totallemons";
+            }
+            else if(Number.isInteger(n) && n>totallemons)
+            {
+                var less=n-totallemons;
+                document.getElementById('result').innerHTML="remove "+less+" lemons to totallemons";
+            }
+            else if(n == totallemons)
+            {
+                alert("enough lemons are there");
+            }
+            else
+                {
+                    alert("enter valid input");
+                }
+        }
+    </script>
+</html>
