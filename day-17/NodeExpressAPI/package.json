@@ -1,0 +1,21 @@
+{
+  "name": "meenaprojectapicreation",
+  "version": "1.0.0",
+  "description": "API creation at postman checks",
+  "main": "server.js",
+  "scripts": {
+    "test": "node mongo commands"
+  },
+  "keywords": [
+    "mongoose",
+    "passport",
+    "express-session",
+    "express",
+    "body-parser",
+    "passport-local",
+    "ejs",
+    "poassport-local-mangoose"
+  ],
+  "author": "meenakshi",
+  "license": "ISC"
+}
