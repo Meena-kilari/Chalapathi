@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        h1, h2 {
+            text-align: center;
+            color: royalblue;
+        }
+        .container {
+            width: 100%;
+            height: 100%;
+            max-width: 100%;
+            background: white;
+            padding: 10px;
+            padding-left: 50px;
+            padding-right: 50px;
+            border-radius: 8px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-top: 15px;
+            transform: translateX(400px);
+            padding-bottom: 10px;
+            padding-left: 41%;
+            transform: translateY(42px);
+        }
+        input {
+            width: 20%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid;
+            border-radius: 4px;
+            transform: translateX(740px);
+        }
+        button {
+            width: 20%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color:chartreuse;
+            color: ;
+            border: solid-blanchedalmond;
+            border-radius: 4px;
+            cursor: pointer;
+            transform: translateX(600px);
+        }
+        button:hover {
+            background-color: mediumaquamarine;
+        }
+        p {
+            margin-top: 20px;
+            text-align: center;
+            
+        }
+        a {
+            color:blue;
+            text-decoration: none;
+            text-align: center;
+            transform: translateY(10px);
+        }
+        
+        .exam-container, .results-container {
+            display: none;
+            width: 100%;
+            height: 100%;
+           
+        }
+        .exam-timer {
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .results-container h2.pass {
+            color: green;
+        }
+        .results-container h2.fail {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Login Form start-->
+        <div id="login-form">
+            <h1>Login</h1>
+            <form id="loginForm" action="#" onsubmit="return validateLoginForm()">
+                <label for="login-email">Email:</label>
+                <input type="email" id="login-email" name="email" required>
+                <label for="login-password">Password:</label>
+                <input type="password" id="login-password" name="password" required>
+                <a href="#" id="resetpswd" onclick="showResetForm()">Forgot Password</a>
+                <button type="submit">Submit</button>
+            </form>
+            <p>Don't have an account? <a href="#" id="show-signup" onclick="showSignupForm()">Sign up</a></p>
+        </div><!-- Login Form end-->
+
+        <!-- Signup Form start-->
+        <div id="signup-form" style="display: none;">
+            <h2>Sign Up</h2>
+            <form id="signupForm" action="#" onsubmit="return validateSignupForm()">
+                <label for="signup-name">Name:</label>
+                <input type="text" id="signup-name" name="name" required>
+                <label for="signup-email">Email:</label>
+                <input type="email" id="signup-email" name="email" required>
+                <label for="signup-username">Username:</label>
+                <input type="text" id="signup-username" name="username" required>
+                <label for="signup-password">Password:</label>
+                <input type="password" id="signup-password" name="password" required>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div><!-- Signup Form end-->
+
+        <!-- Reset Password Form start-->
+        <div id="reset-form" style="display: none;">
+            <h1>Reset Password</h1>
+            <form id="resetForm" action="#" onsubmit="return validateResetForm()">
+                <label for="reset-email">Email:</label>
+                <input type="email" id="reset-email" name="email" required>
+                <label for="new-password">New Password:</label>
+                <input type="password" id="new-password" name="new-password" required>
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+                <button type="submit">Change</button>
+            </form>
+        </div><!-- Reset Password Form end-->
+
+        <!-- Welcome Message start-->
+        <div id="welcome-message" style="display: none;">
+            <h2>Welcome!</h2>
+            <p>You have successfully logged in or signed up, or reset your password.</p>
+            <!--<button onclick="showExam()">Start Exam</button>-->
+        </div>
+        <div id="welcome-message2" style="display: none;">
+            <h2>Welcome!</h2>
+            <p>You have successfully logged in.</p>
+            <button onclick="showExam()">Start Exam</button>
+        </div><!-- Welcome Message end-->
+        <!-- Exam Page start-->
+        <div id="exam" class="exam-container">
+            <div class="exam-timer">Time Remaining: <span id="timer">02:00</span></div>
+            <form id="examForm" onsubmit="return submitExam()">
+                <div class="question">
+                    <label for="question1">1. Meena is the sister of Amulya. Amulya's mother is Aruna. Aruna's father is Siddarth. Siddarth's mother is Moksha. So, what is the connection between Meena and Siddarth?</label>
+                    <input type="radio" id="q1a" name="question1" value="grand daughter"><label for="q1a">Granddaughter</label><br>
+                    <input type="radio" id="q1b" name="question1" value="great grand daughter"><label for="q1b">Great Granddaughter</label><br>
+                    <input type="radio" id="q1c" name="question1" value="niece"><label for="q1c">Niece</label><br>
+                    <input type="radio" id="q1d" name="question1" value="grand mother"><label for="q1d">Grandmother</label>
+                </div>
+                <div class="question">
+                    <label for="question2">2. Ravi and Deepak are brothers. Atul is Rekha's younger brother. Ravi is Rekha's son. What is Deepak's relationship with Rekha?</label>
+                    <input type="radio" id="q2a" name="question2" value="father"><label for="q2a">Father</label><br>
+                    <input type="radio" id="q2b" name="question2" value="nephew"><label for="q2b">Nephew</label><br>
+                    <input type="radio" id="q2c" name="question2" value="son"><label for="q2c">Son</label><br>
+                    <input type="radio" id="q2d" name="question2" value="brother"><label for="q2d">Brother</label>
+                </div>
+                <button type="submit">Submit Exam</button>
+            </form>
+        </div><!-- Exam Page end-->
+
+        <!-- Exam Results Page start-->
+        <div id="exam-results" class="results-container">
+            <div id="results-message"></div>
+            <button onclick="showPage('login-form')">Return to Login</button>
+        </div>
+    </div><!-- Exam Results Page end-->
+
+    <script>
+        // Form navigation functions
+        function showSignupForm() {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('signup-form').style.display = 'block';
+        }
+
+        function showResetForm() {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('reset-form').style.display = 'block';
+        }
+
+        function showExam() {
+            document.getElementById('welcome-message2').style.display = 'none';
+            document.getElementById('exam').style.display = 'block';
+            startTimer();
+        }
+
+        function validateEmail(email) {
+            const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+            return emailPattern.test(email);
+        }
+
+        function validatePassword(password) {
+            return password.length >= 8 && password.length <= 12;
+        }
+
+        function validateLoginForm() {
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            if (!validateEmail(email)) {
+                alert('Invalid email address.');
+                return false;
+            }
+            if (!validatePassword(password)) {
+                alert('Password must be between 8 and 12 characters.');
+                return false;
+            }
+
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('welcome-message2').style.display = 'block';
+            return false;
+        }
+
+        function validateSignupForm() {
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+
+            if (!validateEmail(email)) {
+                alert('Invalid email address.');
+                return false;
+            }
+            if (!validatePassword(password)) {
+                alert('Password must be between 8 and 12 characters.');
+                return false;
+            }
+
+            document.getElementById('signup-form').style.display = 'none';
+            document.getElementById('welcome-message').style.display = 'block';
+            return false;
+        }
+
+        function validateResetForm() {
+            const email = document.getElementById('reset-email').value;
+            const newPassword = document.getElementById('new-password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            if (!validateEmail(email)) {
+                alert('Invalid email address.');
+                return false;
+            }
+            else if (!validatePassword(newPassword)) {
+                alert('New password must be between 8 and 12 characters.');
+                return false;
+            }
+            if (newPassword !== confirmPassword) {
+                alert('Passwords do not match.');
+                return false;
+            }
+
+            document.getElementById('reset-form').style.display = 'none';
+            document.getElementById('welcome-message').style.display = 'block';
+            return false;
+        }
+
+        function submitExam() {
+            const question1 = document.querySelector('input[name="question1"]:checked');
+            const question2 = document.querySelector('input[name="question2"]:checked');
+
+            let score = 0;
+            if (question1 && question1.value === 'grand daughter') score++;
+            if (question2 && question2.value === 'son') score++;
+
+            const resultMessage = document.getElementById('results-message');
+            if (score === 2) {
+                resultMessage.innerHTML = `<h2 class="pass">You passed the exam with ${score} out of 2 marks!</h2>`;
+            } else {
+                resultMessage.innerHTML = `<h2 class="fail">You failed the exam with ${score} out of 2 marks.</h2>`;
+            }
+
+            document.getElementById('exam').style.display = 'none';
+            document.getElementById('exam-results').style.display = 'block';
+            return false;
+        }
+
+        // Timer logic for the exam page
+        let time = 3600; // 60 minutes in seconds
+
+        function updateTimer() {
+            let minutes = Math.floor(time / 60);
+            let seconds = time % 60;
+            document.getElementById('timer').textContent = `${minutes < 70 ? '' : ''}${minutes}:${seconds < 70 ? '  ' : ''}${seconds}`;
+            if (time === 0) {
+                submitExam();
+            } else {
+                time--;
+                setTimeout(updateTimer, 1000);
+            }
+        }
+
+        function startTimer() {
+            time = 3600; // Reset timer
+            updateTimer();
+        }
+
+        // Initialize to show login form
+        function showPage(pageId) {
+            document.querySelectorAll('.container > div').forEach(div => div.style.display = 'none');
+            document.getElementById(pageId).style.display = 'block';
+        }
+
+        showPage('login-form');
+    </script>
+</body>
+</html>

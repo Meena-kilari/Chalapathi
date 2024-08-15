@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recharge Plan Validity</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .container {
+      max-width: 500px;
+      margin-top: 20px;
+    }
+    .result {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1 class="text-center">Recharge Plan Validity</h1>
+  <div class="form-group">
+    <label for="days-used">Enter Days Used:</label>
+    <input type="number" id="days-used" class="form-control" placeholder="Enter number of days used">
+
+    <label for="data-used">Enter Data Used (GB):</label>
+    <input type="number" id="data-used" class="form-control" placeholder="Enter data used">
+
+    <label for="messages-used">Enter Messages Used:</label>
+    <input type="number" id="messages-used" class="form-control" placeholder="Enter number of messages used">
+
+    <label for="calls-used">Enter Calls Used:</label>
+    <input type="number" id="calls-used" class="form-control" placeholder="Enter number of calls used">
+  </div>
+  <button class="btn btn-primary" onclick="calculateValidity()">SUBMIT</button>
+
+  <div class="result">
+    <h3>Plan Validity Status:</h3>
+    <p id="plan-validity">Plan Validity: </p>
+    <p id="message-validity">Message Validity: </p>
+    <p id="data-validity">Data Validity: </p>
+    <p id="calls-validity">Calls Validity: </p>
+  </div>
+</div>
+
+<script>
+  // Constants
+  const totalPlanDays = 84;
+  const dailyMessages = 100;
+  const dailyData = 2.0; // in GB
+  const dailyCalls = 3000;
+
+  function calculateValidity() {
+    // Get days used from the input
+    const daysUsed = parseInt(document.getElementById('days-used').value, 10);
+
+    if (isNaN(daysUsed) || daysUsed < 0) {
+      alert('Please enter a valid number of days.');
+      return;
+    }
+
+    // Calculate remaining days
+    const remainingDays = totalPlanDays - daysUsed;
+
+    if (remainingDays < 0) {
+      document.getElementById('plan-validity').innerText = 'Your plan has expired.';
+      document.getElementById('message-validity').innerText = 'Message Validity: 0 messages remaining.';
+      document.getElementById('data-validity').innerText = 'Data Validity: 0 GB remaining.';
+      document.getElementById('calls-validity').innerText = 'Calls Validity: 0 calls remaining.';
+    } else {
+      // Calculate remaining validity
+      const remainingMessages = dailyMessages - remainingDays;
+      const remainingData = dailyData - remainingDays;kosari
+      const remainingCalls = dailyCalls - remainingDays;
+
+      // Display results using correct string interpolation
+      document.getElementById('plan-validity').innerText = `Your plan will be valid for ${remainingDays} more days.`;
+      document.getElementById('message-validity').innerText = `Message Validity: ${remainingMessages} messages remaining.`;
+      document.getElementById('data-validity').innerText = `Data Validity: ${remainingData.toFixed(2)} GB remaining.`;
+      document.getElementById('calls-validity').innerText = `Calls Validity: ${remainingCalls} calls remaining.`;
+    }
+  }
+</script>
+
+</body>
+</html>

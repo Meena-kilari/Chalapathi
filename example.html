@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-Page Form Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      width: 300px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      display: none;
+    }
+
+    .container.active {
+      display: block;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .form-links {
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .form-links a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .form-links a:hover {
+      text-decoration: underline;
+    }
+
+    .message-container {
+      text-align: center;
+    }
+
+    .exam-container {
+      width: 500px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .timer {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .question {
+      margin-bottom: 20px;
+    }
+
+    .question label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .question input {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Login Form -->
+  <div id="login" class="container active">
+    <h2>Login</h2>
+    <form id="login-form">
+      <div class="form-group">
+        <label for="login-email">Email:</label>
+        <input type="email" id="login-email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="login-password">Password:</label>
+        <input type="password" id="login-password" name="password" required>
+      </div>
+      <button type="button" onclick="submitLogin()">Submit</button>
+      <div class="form-links">
+        <a href="#" onclick="showPage('forgot-password')">Forgot Password?</a>
+        <a href="#" onclick="showPage('signup')">Don't have an account? Sign Up</a>
+      </div>
+    </form>
+  </div>
+
+  <!-- Forgot Password Page -->
+  <div id="forgot-password" class="container">
+    <h2>Forgot Password</h2>
+    <form id="forgot-password-form" onsubmit="return validateForgotPassword()">
+      <div class="form-group">
+        <label for="forgot-email">Email:</label>
+        <input type="email" id="forgot-email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="new-password">New Password:</label>
+        <input type="password" id="new-password" name="new-password" required>
+      </div>
+      <div class="form-group">
+        <label for="confirm-password">Confirm Password:</label>
+        <input type="password" id="confirm-password" name="confirm-password" required>
+      </div>
+      <button type="submit">Change Password</button>
+    </form>
+  </div>
+
+  <!-- Sign-Up Page -->
+  <div id="signup" class="container">
+    <h2>Sign Up</h2>
+    <form id="signup-form" onsubmit="return validateSignup()">
+      <div class="form-group">
+        <label for="signup-name">Name:</label>
+        <input type="text" id="signup-name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="signup-age">Age:</label>
+        <input type="number" id="signup-age" name="age" required>
+      </div>
+      <div class="form-group">
+        <label for="signup-email">Email:</label>
+        <input type="email" id="signup-email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="signup-password">Password:</label>
+        <input type="password" id="signup-password" name="password" required>
+      </div>
+      <button type="submit">Create Account</button>
+    </form>
+  </div>
+
+  <!-- Password Changed Success Page -->
+  <div id="password-changed" class="container">
+    <div class="message-container">
+      <h2>Password Successfully Changed</h2>
+      <a href="#" onclick="showPage('login')">Return to Login</a>
+    </div>
+  </div>
+
+  <!-- Account Created Success Page -->
+  <div id="account-created" class="container">
+    <div class="message-container">
+      <h2>Account Successfully Created</h2>
+      <a href="#" onclick="showPage('login')">Return to Login</a>
+    </div>
+  </div>
+
+  <!-- Exam Page -->
+  <div id="exam" class="container">
+    <div class="exam-container">
+      <div class="timer">
+        Time Remaining: <span id="timer">02:00</span>
+      </div>
+      <form id="exam-form">
+        <div class="question">
+          <label for="question1">1. What is 2 + 2?</label>
+          <input type="radio" id="q1a" name="question1" value="3"><label for="q1a">3</label><br>
+          <input type="radio" id="q1b" name="question1" value="4"><label for="q1b">4</label><br>
+          <input type="radio" id="q1c" name="question1" value="5"><label for="q1c">5</label>
+        </div>
+        <div class="question">
+          <label for="question2">2. What is 3 + 3?</label>
+          <input type="radio" id="q2a" name="question2" value="5"><label for="q2a">5</label><br>
+          <input type="radio" id="q2b" name="question2" value="6"><label for="q2b">6</label><br>
+          <input type="radio" id="q2c" name="question2" value="7"><label for="q2c">7</label>
+        </div>
+        <button type="button" onclick="submitExam()">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function showPage(pageId) {
+      const pages = document.querySelectorAll('.container');
+      pages.forEach(page => page.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+    }
+
+    function validateForgotPassword() {
+      const newPassword = document.getElementById('new-password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+
+      if (newPassword.length < 8 || newPassword.length > 12) {
+        alert("Password must be between 8 and 12 characters.");
+        return false;
+      }
+
+      if (newPassword !== confirmPassword) {
+        alert("Passwords do not match.");
+        return false;
+      }
+
+      return true;
+    }
+
+    function validateSignup() {
+      const password = document.getElementById('signup-password').value;
+
+      if (password.length < 8 || password.length > 12) {
+        alert("Password must be between 8 and 12 characters.");
+        return false;
+      }
+
+      return true;
+    }
+
+    function submitLogin() {
+      // Perform login validation here if needed
+      showPage('exam'); // Redirect to exam page
+    }
+
+    function submitExam() {
+      alert("Exam submitted!");
+      showPage('login'); // Redirect to login page
+    }
+
+    // Timer logic for the exam page
+    let time = 120; // 2 minutes in seconds
+
+    function updateTimer() {
+      let minutes = Math.floor(time / 60);
+      let seconds = time % 60;
+      document.getElementById('timer').textContent = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+      if (time === 0) {
+        document.getElementById('exam-form').action = '#'; // Redirect to login on timeout
+        document.getElementById('exam-form').submit();
+      } else {
+        time--;
+        setTimeout(updateTimer, 1000);
+      }
+    }
+
+    // Initialize to show login form
+    showPage('login');
+    updateTimer();
+  </script>
+</body>
+</html>

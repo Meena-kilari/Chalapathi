@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            background-color: #f0f0f0;
+            margin: 40;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .container {
+            width: 90%;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-top: 10px;
+            padding-left: 30%;
+            transform: translateY(27px);
+        }
+        input {
+            align-items: right;
+            width: 30%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transform: translateX(600px);
+        }
+        button {
+            width: 15%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transform: translateX(600px);
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        p {
+            margin-top: 20px;
+            text-align: center;
+        }
+        a {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Login Form -->
+        <div id="login-form">
+            <h1>Login</h1>
+            <form id="loginForm" action="#" onsubmit="return validateLoginForm()">
+                <label for="login-email">Email:</label>
+                <input type="email" id="login-email" name="email" required>
+                <label for="login-password">Password:</label>
+                <input type="password" id="login-password" name="password" required>
+                <a href="#" id="resetpswd" style="text-align: center; transform: translateY(15px);" onclick="showResetForm()">Forget Password</a>
+                <button type="submit">Submit</button>
+            </form>
+            <p>Don't have an account? <a href="#" id="show-signup" onclick="showSignupForm()">Sign up</a></p>
+        </div>
+
+        <!-- Signup Form -->
+        <div id="signup-form" style="display: none;">
+            <h2>Sign Up</h2>
+            <form id="signupForm" action="#" onsubmit="return validateSignupForm()">
+                <label for="signup-name">Name:</label>
+                <input type="text" id="signup-name" name="name" required>
+                <label for="signup-email">Email:</label>
+                <input type="email" id="signup-email" name="email" required>
+                <label for="signup-username">Username:</label>
+                <input type="text" id="signup-username" name="username" required>
+                <label for="signup-password">Password:</label>
+                <input type="password" id="signup-password" name="password" required>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+
+        <!-- Reset Password Form -->
+        <div id="reset-form" style="display: none;">
+            <h1>Reset Password</h1>
+            <form id="resetForm" action="#" onsubmit="return validateResetForm()">
+                <label for="reset-email">Email:</label>
+                <input type="email" id="reset-email" name="email" required>
+                <label for="new-password">New Password:</label>
+                <input type="password" id="new-password" name="new-password" required>
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+                <button type="submit">Change</button>
+            </form>
+        </div>
+
+        <!-- Welcome Message -->
+        <div id="welcome-message" style="display: none;">
+            <h2>Welcome!</h2>
+            <p>You have successfully logged in or signed up, or reset your password.</p>
+        </div>
+    </div>
+<script>
+    function validateEmail(email) {
+    const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    return emailPattern.test(email);
+}
+
+function validatePassword(password) {
+    return password.length >= 8 && password.length <= 12;
+}
+
+document.getElementById('show-signup').addEventListener('click', function(event) {
+    event.preventDefault();
+    document.getElementById('login-form').style.display = 'none';
+    document.getElementById('signup-form').style.display = 'block';
+});
+
+document.getElementById('resetpswd').addEventListener('click', function(event) {
+    event.preventDefault();
+    document.getElementById('login-form').style.display = 'none';
+    document.getElementById('reset-form').style.display = 'block';
+});
+
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-password').value;
+    
+    if (!validateEmail(email)) {
+        alert('Invalid email address.');
+        return;
+    }
+    if (!validatePassword(password)) {
+        alert('Password must be between 8 and 12 characters.');
+        return;
+    }
+
+    document.getElementById('login-form').style.display = 'none';
+    document.getElementById('welcome-message').style.display = 'block';
+});
+
+document.getElementById('signupForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const email = document.getElementById('signup-email').value;
+    const password = document.getElementById('signup-password').value;
+
+    if (!validateEmail(email)) {
+        alert('Invalid email address.');
+        return;
+    }
+    if (!validatePassword(password)) {
+        alert('Password must be between 8 and 12 characters.');
+        return;
+    }
+
+    document.getElementById('signup-form').style.display = 'none';
+    document.getElementById('welcome-message').style.display = 'block';
+});
+
+document.getElementById('resetForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const email = document.getElementById('reset-email').value;
+    const newPassword = document.getElementById('new-password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
+
+    if (!validateEmail(email)) {
+        alert('Invalid email address.');
+        return;
+    }
+    if (!validatePassword(newPassword)) {
+        alert('New password must be between 8 and 12 characters.');
+        return;
+    }
+    if (newPassword !== confirmPassword) {
+        alert('Passwords do not match.');
+        return;
+    }
+
+    document.getElementById('reset-form').style.display = 'none';
+    document.getElementById('welcome-message').style.display = 'block';
+});
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
