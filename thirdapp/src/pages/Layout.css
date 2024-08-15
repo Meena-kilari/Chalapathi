@@ -1,0 +1,47 @@
+.layout {
+  display: flex;
+  justify-content: space-between;
+}
+
+.App-logo {
+  width: 50vmin;
+  height: 40vmin;
+
+  text-align: center;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.google-map-code {
+  flex: 1;
+  margin-right: 20px; 
+}
+
+.form-container {
+  flex: 1;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  margin-bottom: 7px;
+}
+
+input {
+  margin-bottom: 15px;
+  padding: 8px;
+  width: 50%;
+  transform: translateX(20px);
+}
+
+button {
+  padding: 5px 20px;
+  background-color: chartreuse;
+  transform: translateX(150px);
+}

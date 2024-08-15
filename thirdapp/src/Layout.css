@@ -1,0 +1,9 @@
+.layout {
+  display: flex;
+  justify-content: space-between; /* Adjusts spacing between components */
+}
+
+.layout > * {
+  flex: 1;
+  margin: 0 10px; /* Adds some spacing between the components */
+}
