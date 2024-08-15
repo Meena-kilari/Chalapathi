@@ -1,0 +1,21 @@
+CREATE DATABASE ciet
+CREATE TABLE student(sid int(6) PRIMARY KEY AUTO_INCREMENT,sname varchar(15) NOT NULL,address text NULL,phone varchar(10) UNIQUE,dob date NULL,salary float(5,2) NOT NULL,email varchar(20) UNIQUE)
+INSERT INTO student(sname,address,phone,dob,salary,email)VALUES('K.Meenakshi','guntur','9505045987','2005-09-04',154.32,'kilari@gmail.com'),INSERT INTO student(sname,address,phone,dob,salary,email)VALUES('K.Meekjehrwiui','goa','9505045898','2008-09-04',158.32,'kili@gmail.com'),('K.Manu','guntur','8524896321','2009-01-04',152.32,'kinmki@gmail.com'),('K.sai ram','banglore','9505058964','2008-02-15',111.32,'kinhdji@gmail.com'),('K.hari','chennai','9505056237','2001-02-04',154.32,'kilhjki@gmail.com')
+SELECT * FROM student
+SELECT * FROM student WHERE  address='gutnur'
+SELECT * FROM student WHERE salary=154.32
+SELECT * FROM student WHERE sname like 'k%'
+SELECT * FROM student WHERE sname like '%i'
+SELECT * FROM student WHERE sname like 'k%i'
+SELECT * FROM student WHERE sname like 'k___e%i'
+SELECT * FROM student WHERE dob LIKE '_____09%'
+SELECT salary,sname FROM student WHERE salary= (SELECT MAX(salary) FROM student)
+SELECT salary,sname FROM student WHERE salary= (SELECT MIN(salary) FROM student)
+SELECT * FROM student WHERE dob BETWEEN '1995-01-01' AND '2000-12-31'
+SELECT * FROM student ORDER BY salary DESC
+SELECT * FROM student ORDER BY salary DESC LIMIT 3
+DESCRIBE student
+SELECT * FROM student WHERE phone IS NULL
+SELECT * FROM student WHERE phone IS NOT NULL
+SELECT address,COUNT(*),GROUP_CONCAT(sname) AS 'allname contains' FROM student GROUP BY address
+
